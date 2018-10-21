@@ -2,9 +2,6 @@
 
 .navbar {
   margin-bottom: $spacer;
-  position: fixed;
-  width: 100%;
-  top: 0;
 }
 
 .nav-link.dropdown-toggle {
@@ -30,6 +27,16 @@
   position: absolute;
   margin: 0;
   left: 0px;
+}
+
+.artboard .titlebar .klra-user {
+  background-color: #555555;
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  margin: -5px -30px;
+  text-align: right;
+  font-size: x-small;
 }
 
 .artboard .titlebar .searchbar {
