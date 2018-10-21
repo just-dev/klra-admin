@@ -45,6 +45,12 @@ ul.sidebar {
   cursor: pointer;
 }
 
+.selected {
+  background-color: #f0b801;
+  color: black;
+  margin: 0;
+}
+
 li:hover {
   background-color: #f0b801;
   color: black;

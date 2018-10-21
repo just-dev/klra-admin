@@ -15,6 +15,12 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { SharedModule } from '@app/shared';
 import { CoreModule } from '../core/core.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { StatusComponent } from './status/status.component';
+import { ManageComponent } from './manage/manage.component';
+import { ComponentStatusComponent } from './component-status/component-status.component';
+import { AsManageComponent } from './as-manage/as-manage.component';
+import { DiscardedComponent } from './discarded/discarded.component';
+import { SoldComponent } from './sold/sold.component';
 
 library.add(fas, far);
 
@@ -26,7 +32,13 @@ library.add(fas, far);
     CardTestComponent,
     CardTest2Component,
     SideNavComponent,
-    MachinaryComponent
+    MachinaryComponent,
+    StatusComponent,
+    ManageComponent,
+    ComponentStatusComponent,
+    AsManageComponent,
+    DiscardedComponent,
+    SoldComponent
   ]
 })
 export class MachinaryModule {}

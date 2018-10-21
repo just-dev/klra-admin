@@ -16,6 +16,7 @@ import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MachinaryModule } from './machinary/machinary.module';
+import { GeneralModule } from './general/general.module';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { MachinaryModule } from './machinary/machinary.module';
     AboutModule,
     LoginModule,
     MachinaryModule,
+    GeneralModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],

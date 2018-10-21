@@ -1,56 +1,22 @@
 <div class="side-nav-container">
   <div class="admin-nav-wrap">
     <ul class="sidebar">
-      <li class="sidebar-stitle">
-        <fa-icon [icon]="['fas', 'folder']" size="sm"></fa-icon>
-        일반관리
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        스케쥴
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        거래명세서
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        세금계산서
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        견적서
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        발주서
-      </li>
-      <li></li>
-      <li class="sidebar-stitle">
-        <fa-icon [icon]="['fas', 'folder']" size="sm"></fa-icon>
-        일반관리
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        스케쥴
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        거래명세서
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        세금계산서
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        견적서
-      </li>
-      <li class="sidebar-title">
-        <fa-icon [icon]="['fas', 'angle-right']" size="sm"></fa-icon>
-        발주서
-      </li>
-
+      <ng-container *ngFor="let m of menu">
+        <ng-container [ngSwitch]="m.type">
+          <ng-container *ngSwitchCase="'title'">
+            <li class="sidebar-stitle">
+              <fa-icon [icon]="m.icon" size="sm"></fa-icon>
+              {{m.title}}
+            </li>
+          </ng-container>
+          <ng-container *ngSwitchCase="'menu'">
+            <li class="sidebar-stitle" [routerLink]="m.router" routerLinkActive="selected">
+              <fa-icon [icon]="m.icon" size="sm"></fa-icon>
+              {{m.title}}
+            </li>
+          </ng-container>
+        </ng-container>
+      </ng-container>
     </ul>
   </div>
 </div>
