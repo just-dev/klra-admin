@@ -14,37 +14,51 @@ const log = new Logger('Login');
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   version: string = environment.version;
   error: string;
   loginForm: FormGroup;
   isLoading = false;
+  errorMsg: string;
 
-  constructor(private router: Router,
-              private formBuilder: FormBuilder,
-              private i18nService: I18nService,
-              private authenticationService: AuthenticationService) {
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private i18nService: I18nService,
+    private authenticationService: AuthenticationService
+  ) {
     this.createForm();
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   login() {
     this.isLoading = true;
-    this.authenticationService.login(this.loginForm.value)
-      .pipe(finalize(() => {
-        this.loginForm.markAsPristine();
-        this.isLoading = false;
-      }))
-      .subscribe(credentials => {
-        log.debug(`${credentials.username} successfully logged in`);
-        this.router.navigate(['/'], { replaceUrl: true });
-      }, error => {
-        log.debug(`Login error: ${error}`);
-        this.error = error;
-      });
+    this.authenticationService
+      .login(this.loginForm.value)
+      .pipe(
+        finalize(() => {
+          this.loginForm.markAsPristine();
+          this.isLoading = false;
+        })
+      )
+      .subscribe(
+        res => {
+          if (res.ok === 1) {
+            this.router.navigate(['/machinary'], { replaceUrl: true });
+          } else {
+            if (res.info && res.info.msg) {
+              this.errorMsg = res.info.msg;
+            } else {
+              this.errorMsg = 'Server erorr';
+            }
+          }
+        },
+        error => {
+          log.debug(`Login error: ${error}`);
+          this.error = error;
+        }
+      );
   }
-
   setLanguage(language: string) {
     this.i18nService.language = language;
   }
@@ -59,10 +73,9 @@ export class LoginComponent implements OnInit {
 
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      id: ['', Validators.required],
       password: ['', Validators.required],
       remember: true
     });
   }
-
 }

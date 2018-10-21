@@ -1,33 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import * as jwtDecode from 'jwt-decode';
 
 export interface Credentials {
-  // Customize received credentials here
-  username: string;
+  name: string;
   token: string;
 }
 
 export interface LoginContext {
-  username: string;
+  id: string;
   password: string;
-  remember?: boolean;
 }
 
+export interface ApiResponse {
+  ok: number;
+  data?: any;
+  info?: any;
+}
 const credentialsKey = 'credentials';
 
+const routes = {
+  login: () => `/auth/klra/func/admin_login`
+};
 /**
  * Provides a base for authentication workflow.
  * The Credentials interface as well as login/logout methods should be replaced with proper implementation.
  */
 @Injectable()
 export class AuthenticationService {
-
   private _credentials: Credentials | null;
-
-  constructor() {
+  private jwtUserData: any;
+  constructor(private httpClient: HttpClient) {
     const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
     if (savedCredentials) {
       this._credentials = JSON.parse(savedCredentials);
+      if (this._credentials && this._credentials.token) {
+        this.jwtUserData = jwtDecode(this._credentials.token);
+        localStorage.setItem('token', this._credentials.token);
+      }
     }
   }
 
@@ -36,14 +48,16 @@ export class AuthenticationService {
    * @param {LoginContext} context The login parameters.
    * @return {Observable<Credentials>} The user credentials.
    */
-  login(context: LoginContext): Observable<Credentials> {
-    // Replace by proper authentication call
-    const data = {
-      username: context.username,
-      token: '123456'
-    };
-    this.setCredentials(data, context.remember);
-    return of(data);
+  login(context: LoginContext): Observable<ApiResponse> {
+    return this.httpClient.post(routes.login(), context).pipe(
+      map((body: any) => {
+        if (body && body.ok === 1) {
+          this.setCredentials(body.data);
+        }
+        return body;
+      }),
+      catchError(() => of('Error, could not connect server :-('))
+    );
   }
 
   /**
@@ -61,7 +75,17 @@ export class AuthenticationService {
    * @return {boolean} True if the user is authenticated.
    */
   isAuthenticated(): boolean {
-    return !!this.credentials;
+    if (this.credentials && this.credentials.token && this.jwtUserData) {
+      if (!this.jwtUserData.hasOwnProperty('exp')) {
+        return false;
+      }
+      const date = new Date(0);
+      date.setUTCSeconds(this.jwtUserData.exp);
+      if (date.valueOf() > new Date().valueOf() && this.jwtUserData.role === 'admin') {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
@@ -82,13 +106,15 @@ export class AuthenticationService {
   private setCredentials(credentials?: Credentials, remember?: boolean) {
     this._credentials = credentials || null;
 
-    if (credentials) {
-      const storage = remember ? localStorage : sessionStorage;
+    if (credentials && credentials.token) {
+      const storage = localStorage;
+      this.jwtUserData = jwtDecode(credentials.token);
+
+      storage.setItem('token', credentials.token);
       storage.setItem(credentialsKey, JSON.stringify(credentials));
     } else {
       sessionStorage.removeItem(credentialsKey);
       localStorage.removeItem(credentialsKey);
     }
   }
-
 }
