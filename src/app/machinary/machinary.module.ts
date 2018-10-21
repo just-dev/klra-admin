@@ -21,11 +21,22 @@ import { ComponentStatusComponent } from './component-status/component-status.co
 import { AsManageComponent } from './as-manage/as-manage.component';
 import { DiscardedComponent } from './discarded/discarded.component';
 import { SoldComponent } from './sold/sold.component';
+import { MachinaryInputComponent } from './machinary-input/machinary-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MachinaryCardDetailComponent } from './machinary-card-detail/machinary-card-detail.component';
 
 library.add(fas, far);
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule, TranslateModule, CoreModule, SharedModule, MachinaryRoutingModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    TranslateModule,
+    CoreModule,
+    SharedModule,
+    MachinaryRoutingModule
+  ],
   declarations: [
     CardContainerComponent,
     CardFormComponent,
@@ -38,7 +49,9 @@ library.add(fas, far);
     ComponentStatusComponent,
     AsManageComponent,
     DiscardedComponent,
-    SoldComponent
+    SoldComponent,
+    MachinaryInputComponent,
+    MachinaryCardDetailComponent
   ]
 })
 export class MachinaryModule {}
