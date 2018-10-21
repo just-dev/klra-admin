@@ -1,14 +1,9 @@
 <div class="equipment_card">
   <ul>
-    <li class="card_add">
-      <fa-icon [icon]="['fas', 'plus']" size="2x"></fa-icon>
-    </li>
     <li class="code_number">장비등록</li>
   </ul>
 
   <div>
-    <ul>
-      <li>
         <table class="customers">
           <tr>
             <td class="selector01">높이</td>
@@ -50,15 +45,17 @@
             <input type="text" class="form-control " id="시리얼번호" placeholder="시리얼번호를 입력하세요">
           </tr>
         </table>
-      </li>
-      <div class="form-row justify-content-end">
-        <div class="col-2">
-          <button type="button" class="btn btn-success btn-block">등록</button>
+  
+        <br>
+        <div class="form-row justify-content-end">
+          <div class="col-2">
+              <button class="btn btn-block btn-secondary machinary-add">취소</button>
           </div>
           <div class="col-2">
-          <button type="button" class="btn btn-secondary btn-block">취소</button>
+              <button class="btn btn-block btn-success machinary-add">장비추가</button>
+          </div>
         </div>
-      </div>
-    </ul>
+
+  
   </div>
 </div>

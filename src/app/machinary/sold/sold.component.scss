@@ -2,3 +2,144 @@
   margin-top: 120px;
   margin-left: 240px;
 }
+.workspace {
+  margin-top: 120px;
+  margin-left: 240px;
+}
+ul {
+  padding-left: 40px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  min-width: 800px;
+}
+
+li {
+  text-align: center;
+  display: table-cell;
+  width: 3%;
+  vertical-align: middle;
+}
+
+.sub-title {
+  color: #aaaaaa;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 14%;
+}
+.status_value {
+  font-family: Noto;
+  color: #aaaaaa !important;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.status_value0 {
+  font-family: Noto;
+  color: #aaaaaa !important;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.status_value1 {
+  font-family: Noto;
+  color: #aaaaaa !important;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.customers {
+  width: 100%;
+
+  font-size: 0.5rem;
+  border: 0px solid #ddd;
+}
+
+.container1 {
+  height: 50%;
+  left: 210px;
+  top: 20%;
+  width: 320px;
+}
+
+.equipment_card {
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 0px rgba($color: #000000, $alpha: 0.2);
+  padding: 10px 10px 5px 10px;
+  // width: 90%;
+  min-width: 800px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.header1 {
+  font-size: 1rem;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+img {
+  margin-left: 0;
+}
+
+table {
+  min-width: 500px;
+  overflow-x: hidden;
+}
+
+td {
+  text-align: left;
+  vertical-align: middle;
+  height: 20px;
+}
+
+tr:nth-child(even) {
+  background-color: #ecf9ff;
+}
+
+.col-md-1 {
+  color: #aaaaaa;
+  font-size: 0.5rem;
+  width: 7%;
+  padding: 5px 0 5px 10px;
+  vertical-align: middle;
+}
+
+.col-md-3 {
+  color: #333333;
+  font-size: 0.8rem;
+  font-weight: 900;
+  width: 15%;
+  padding: 5px 0 5px 0;
+  vertical-align: middle;
+}
+
+.code_number {
+  font-family: Noto;
+  color: #333333;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.status_value {
+  font-family: Noto;
+  color: #aaaaaa !important;
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+ul {
+  padding-left: 20px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+
+li {
+  text-align: center;
+  display: table-cell;
+  width: 3%;
+  vertical-align: middle;
+}
