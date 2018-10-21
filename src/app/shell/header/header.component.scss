@@ -7,6 +7,16 @@
 .nav-link.dropdown-toggle {
   cursor: pointer;
 }
+.user-name {
+  color: #ffffff;
+}
+.user-login-button {
+  line-height: normal !important;
+  background-color: #222222;
+  border-radius: 3px;
+  color: #cccccc;
+  border: 1px solid #444444;
+}
 
 .artboard {
   position: fixed;
