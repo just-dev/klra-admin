@@ -3,46 +3,75 @@
     <li class="code_number">장비등록</li>
   </ul>
   <form [formGroup]="form">
-    <table class="customers">
-      <tr>
-        <td class="selector01">높이</td>
-        <select class="form-control" placeholder="높이를 입력하세요" formControlName="height">
+    <div class="form-row justify-content-between">
+      <div class="col-3">
+        <label class="selector01">높이</label>
+        <select class="form-control custom-select" placeholder="높이를 입력하세요" formControlName="height">
           <option *ngFor="let h of heightList" [value]="h">{{h}}M</option>
         </select>
-        <td class="selector01">등급</td>
-        <select class="form-control" placeholder="등급을 입력하세요" formControlName="grade">
+      </div>
+      <div class="col-3">
+        <label class="selector01">등급</label>
+        <select class="form-control custom-select" placeholder="등급을 입력하세요" formControlName="grade">
           <option *ngFor="let g of gradeList">{{g}}</option>
         </select>
-        <td class="selector01">제작사</td>
+      </div>
+      <div class="col-3">
+        <label class="selector01">제작사</label>
         <select class="form-control" placeholder="제작사를 입력하세요" formControlName="manufacturer">
           <option *ngFor="let mn of manufacturerList">{{mn}}</option>
         </select>
-      </tr>
-      <tr>
-        <td class="selector01">구입처</td>
+      </div>
+    </div>
+    <div class="form-row justify-content-between">
+      <div class="col-3">
+
+        <label class="selector01">구입처</label>
         <input type="text" class="form-control" id="구입처" placeholder="구입처 입력하세요" formControlName="purchase">
-        <td class="selector01">구입일자</td>
+      </div>
+      <div class="col-3">
+
+        <label class="selector01">구입일자</label>
         <input type="date" class="form-control" id="구입일자" formControlName="purchase_date">
-        <td class="selector01">구입가격</td>
+      </div>
+      <div class="col-3">
+
+        <label class="selector01">구입가격</label>
         <input type="number" class="form-control " id="구입가격" placeholder="구입가격을 입력하세요" formControlName="purchase_price">
-      </tr>
-      <tr>
-        <td class="selector01">관리번호</td>
+      </div>
+    </div>
+    <div class="form-row justify-content-between">
+      <div class="col-3">
+
+        <label class="selector01">관리번호</label>
         <input type="text" class="form-control" id="관리번호" placeholder="관리번호를 입력하세요" formControlName="code">
-        <td class="selector01">모델명</td>
+      </div>
+      <div class="col-3">
+
+        <label class="selector01">모델명</label>
         <input type="text" class="form-control " id="모델명" placeholder="모델명을 입력하세요" formControlName="model_name">
-        <td class="selector01">시리얼번호</td>
+      </div>
+      <div class="col-3">
+
+        <label class="selector01">시리얼번호</label>
         <input type="text" class="form-control " id="시리얼번호" placeholder="시리얼번호를 입력하세요" formControlName="serial">
-      </tr>
-      <tr>
-        <td class="selector01">월임대료</td>
+      </div>
+    </div>
+    <div class="form-row justify-content-between">
+      <div class="col-3">
+
+        <label class="selector01">월임대료</label>
         <input type="number" class="form-control" id="구입처" placeholder="월임대료를 입력하세요" formControlName="monthly_rental">
-        <td class="selector01">일임대료</td>
+      </div>
+      <div class="col-3">
+        <label class="selector01">일임대료</label>
         <input type="number" class="form-control" id="구입일자" placeholder="일임대료를 입력하세요" formControlName="daily_rental">
-        <td class="selector01">비고</td>
+      </div>
+      <div class="col-3">
+        <label class="selector01">비고</label>
         <input type="text" class="form-control " id="구입가격" placeholder="비고를 입력하세요" formControlName="desc">
-      </tr>
-    </table>
+      </div>
+    </div>
     <br>
     <div class="form-row justify-content-end">
       <div class="col-2">
