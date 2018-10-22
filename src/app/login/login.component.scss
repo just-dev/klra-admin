@@ -16,6 +16,8 @@
   align-items: center;
   width: 100%;
   min-height: 100%;
+  background-image: url("/src/assets/login.jpg");
+  background-size: auto;
 }
 
 .ng-invalid.ng-touched:not(form) {
@@ -26,4 +28,8 @@
   .container {
     width: 100%;
   }
+}
+
+.d-block {
+  color: #ffffff !important;
 }
